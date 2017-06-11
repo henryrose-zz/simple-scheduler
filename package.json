@@ -1,0 +1,61 @@
+{
+    "name": "simpleScheduler",
+    "version": "0.0.1",
+    "eslintConfig": {
+        "extends": "eslint:recommended",
+        "env": {
+            "node": true,
+            "es6": true
+        },
+        "rules":{
+          "indent": [
+            "error",
+            2
+        ],
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
+        "quotes": [
+            "error",
+            "double"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+        "no-console": [
+          "warn"
+        ],
+        "curly" : [
+          "error",
+          "all"
+        ],
+        "no-global-assign" : [
+          "error"
+        ],
+        "indent" : [
+          "error",
+          2
+        ],
+        "brace-style" : [
+          "warn"
+        ],
+        "arrow-spacing" : [
+          "warn"
+        ],
+        "no-var" : [
+          "warn"
+        ],
+        "prefer-template" : [
+          "warn"
+        ],
+        "no-console" : [
+          "error",
+          {
+            "allow": ["warn", "error"]
+          }
+        ]
+      }
+    }
+}
