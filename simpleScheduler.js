@@ -62,6 +62,6 @@ const tick = time => {
 };
 
 module.exports = {
-  addJob,
+  addJobs,
   init
 };
