@@ -21,7 +21,13 @@ const createTestJobs = () => {
 // helper function to round milliseconds to seconds
 const toSeconds = timeInMilliseconds => Math.round( timeInMilliseconds /1000);
 
+const displaySeconds = timeInSeconds => {
+  const date = new Date(timeInSeconds);
+  return `${date.getUTCHours()}:${date.getUTCMinutes()}:${date.getUTCSeconds()}`;
+};
+
 module.exports = {
   createTestJobs,
+  displaySeconds,
   toSeconds
 };
