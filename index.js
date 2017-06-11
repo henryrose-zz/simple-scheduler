@@ -6,7 +6,8 @@ const toSeconds = require("./helpers").toSeconds;
 const scheduler = require("./simpleScheduler");
 
 const main = () => {
-  const testMode = "addJobs";
+
+  const testMode = process.argv[2];
 
   console.log(`Starting Simple Scheduler || testMode: ${testMode}`);
   console.log("CTRL + C to stop");
