@@ -1,44 +1,30 @@
-const populateTestJobs = () => {
-  const now = new Date();
 
-  for ( let i = 0; i < 10; i++){
-
-    const id = i;
-    const time = now.valueOf() + 500 * i;
-
-    const timeInSeconds = toSeconds(time)
-
-    console.log(`new job || id: ${id}  time: ${timeInSeconds} `);
-
-    addJob({
-      id,
-      time : timeInSeconds
-    })
-  }
-}
-
-const toSeconds = timeInMilliseconds => Math.round( timeInMilliseconds /1000);
-
-//========================================================
+const createTestJobs = require('./helpers').createTestJobs;
+const toSeconds = require('./helpers').toSeconds;
 
 // A javascript object to contain global list of jobs
 let queue = {};
-
 
 // Adds a job to the global list
 const addJob = ({ id, time }) => {
   if (queue[time]){
     queue[time].push(id);
   } else {
-      queue[time] = [id];
+    queue[time] = [id];
   }
+  console.log(`new job || id: ${id}  time: ${time} `);
 };
+
+// Add an array of jobs to queue
+const addJobs = jobs => {
+  jobs.forEach( job => {
+    addJob(job);
+  })
+}
 
 // Returns array of jobs for a tick
 const getJobsForTick = tick => {
-
   let jobs = queue[toSeconds(tick).toString()];
-
   return jobs ? jobs : [];
 }
 
@@ -54,10 +40,15 @@ const tick = time => {
   })
 }
 
+// Main function for scheduler
+// - populates queue
+// - executes a tick ever 1 second
 const main = () => {
 
   // stick some dummy data into the job queue
-  populateTestJobs();
+  const testJobs = createTestJobs();
+  console.log(testJobs)
+  addJobs(testJobs);
 
   // log the contents of the job queue
   console.log('queue: ', queue);
@@ -71,4 +62,5 @@ const main = () => {
   }, 1000)
 }
 
+// Start the scheduler
 main();
